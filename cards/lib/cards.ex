@@ -15,12 +15,14 @@ defmodule Cards do
   #  List.flatten(cards)
 
   # list comprehension approach 2 - cleaner and more efficient
-  for suit <- suits, value <- values, do
+  for suit <- suits, value <- values do
     "#{value} of #{suit}"
   end
-  end
-
  end
+
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
+  end
 
  def shuffle(deck) do
     Enum.shuffle(deck)

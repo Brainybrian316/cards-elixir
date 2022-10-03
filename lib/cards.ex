@@ -40,10 +40,16 @@ end
   end
 
   def load(filename) do 
-case File.read(filename) do
+    case File.read(filename) do
       {:ok, binary} -> :erlang.binary_to_term binary
-      {:error, reason} -> "That file does not exist"
+      {:error, _reason} -> "That file does not exist"
     end 
+  end
+
+  def create_hand(hand_size) do
+    deck = Cards.create_deck
+    deck = Cards.shuffle(deck)
+    hand = Cards.deal(deck, hand_size)
   end
 
 end

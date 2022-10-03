@@ -30,6 +30,14 @@ defmodule Cards do
     File.write(filename, binary)
   end
 
+  def load(filename) do 
+    {status, binary} = File.read(filename)
+    case status do
+      :ok -> :erlang.binary_to_term binary
+      :error -> "That file does not exist"
+    end 
+  end
+
  def shuffle(deck) do
     Enum.shuffle(deck)
  end

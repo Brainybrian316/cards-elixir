@@ -47,9 +47,11 @@ end
   end
 
   def create_hand(hand_size) do
-    deck = Cards.create_deck
-    deck = Cards.shuffle(deck)
-    hand = Cards.deal(deck, hand_size)
+    # have to take consistent first arguments in a function
+    # pipe automatically passes the first argument to the next function and not the second
+    Cards.create_deck
+    |> Cards.shuffle
+    |> Cards.deal(hand_size) 
   end
 
 end

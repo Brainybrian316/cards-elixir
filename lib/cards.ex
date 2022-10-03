@@ -30,7 +30,16 @@ defmodule Cards do
   Enum.shuffle(deck)
 end
 
-#  the '?' after contains is convention to let other developers know this function returns a boolean
+@doc """
+Determines whether a deck contains a given card. We use '?' in contains to let developer know that this function returns a boolean. 
+
+## Examples
+
+      iex> deck = Cards.create_deck
+      iex> Cards.contains?(deck, "Ace of Spades")
+      true
+
+"""
 def contains?(deck, card) do
   Enum.member?(deck, card)
 end
@@ -44,7 +53,7 @@ Divides a deck into a hand and the remainder of the deck. The `hand_size`argumen
       iex> {hand, deck} = Cards.deal(deck, 1)
       iex> hand
       ["Ace of Spades"]
-      
+
 """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)

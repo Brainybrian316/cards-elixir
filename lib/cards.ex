@@ -20,6 +20,15 @@ defmodule Cards do
   end
  end
 
+ def shuffle(deck) do
+  Enum.shuffle(deck)
+end
+
+#  the '?' after contains is convention to let other developers know this function returns a boolean
+def contains?(deck, card) do
+  Enum.member?(deck, card)
+end
+
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
@@ -31,20 +40,10 @@ defmodule Cards do
   end
 
   def load(filename) do 
-    {status, binary} = File.read(filename)
-    case status do
-      :ok -> :erlang.binary_to_term binary
-      :error -> "That file does not exist"
+case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term binary
+      {:error, reason} -> "That file does not exist"
     end 
-  end
-
- def shuffle(deck) do
-    Enum.shuffle(deck)
- end
-
-#  the '?' after contains is convention to let other developers know this function returns a boolean
-  def contains?(deck, card) do
-    Enum.member?(deck, card)
   end
 
 end

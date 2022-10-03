@@ -6,9 +6,20 @@ defmodule Cards do
 
   suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
-  # list comprehension
-    for suit <- suits do  "is this a map?"
- end
+  # # list comprehension approach 1
+  #  cards = for value <- values do
+  #    for suit <- suits do
+  #     "#{value} of #{suit}"
+  #    end
+  #  end
+  #  List.flatten(cards)
+
+  # list comprehension approach 2 - cleaner and more efficient
+  for suit <- suits, value <- values, do
+    "#{value} of #{suit}"
+  end
+  end
+
  end
 
  def shuffle(deck) do
